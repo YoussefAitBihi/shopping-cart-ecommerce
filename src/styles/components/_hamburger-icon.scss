@@ -1,0 +1,42 @@
+.hamburger-icon {
+  order: -1;
+  scale: 0.7;
+  z-index: 1000;
+  display: none;
+
+  @media only screen and (width <= $bp-mobile) {
+    display: block;
+  }
+
+  &__layer {
+    display: block;
+    width: 2.5rem;
+    height: 0.4rem;
+    background-color: $clr-dark-grayish-blue;
+
+    transition: all 0.2s ease-in;
+
+    &:not(:last-of-type) {
+      margin-bottom: 0.5rem;
+    }
+  }
+
+  &:hover &__layer,
+  &:focus &__layer {
+    background-color: $clr-primary-orange;
+  }
+
+  &[aria-expanded="true"] &__layer--top {
+    rotate: -45deg;
+    translate: 0 1rem;
+  }
+
+  &[aria-expanded="true"] &__layer--middle {
+    opacity: 0;
+  }
+
+  &[aria-expanded="true"] &__layer--bottom {
+    rotate: 45deg;
+    translate: 0 -0.8rem;
+  }
+}

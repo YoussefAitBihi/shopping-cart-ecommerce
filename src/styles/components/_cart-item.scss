@@ -1,0 +1,35 @@
+.cart-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  column-gap: 1.6rem;
+
+  &:not(:last-child) {
+    margin-bottom: 2rem;
+  }
+
+  &__image {
+    width: 6rem;
+    height: 6rem;
+
+    & > img {
+      border-radius: 8px;
+    }
+  }
+
+  &__title {
+    font-size: $fs-400;
+    font-weight: 400;
+    color: $clr-dark-grayish-blue;
+    margin-bottom: 0.5rem;
+  }
+
+  &__amount {
+    margin-left: 1rem;
+    color: $clr-black-light;
+  }
+
+  &__trash {
+    cursor: pointer;
+  }
+}

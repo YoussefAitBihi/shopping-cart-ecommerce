@@ -1,0 +1,9 @@
+.secondary-navigation {
+  display: flex;
+  column-gap: clamp(1rem, 5vw, 3rem);
+  justify-content: flex-end;
+
+  @media only screen and (width <= $bp-mobile) {
+    flex-grow: 1;
+  }
+}

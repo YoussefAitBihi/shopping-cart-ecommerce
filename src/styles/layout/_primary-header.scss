@@ -1,0 +1,15 @@
+.primary-header {
+  display: flex;
+  align-items: center;
+  column-gap: 2rem;
+  grid-column: 2 / 3;
+  border-bottom: 2px solid $clr-light-grayish-blue;
+
+  position: relative;
+
+  @media only screen and (width <= $bp-mobile) {
+    grid-column: 1 / -1;
+    box-shadow: $shadow-primary;
+    padding: 1rem;
+  }
+}

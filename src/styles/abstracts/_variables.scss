@@ -1,0 +1,37 @@
+/* ------------------------ */
+/*        BREAKPOINTS       */
+/* ------------------------ */
+// $bp-mobile: 23.4375em;
+$bp-mobile: 47.375em;
+$bp-desktop: 90em;
+
+/* ------------------------ */
+/*          COLORS          */
+/* ------------------------ */
+$clr-primary-orange: hsl(26, 100%, 55%);
+$clr-primary-orange-pale: hsl(25, 100%, 94%);
+
+$clr-dark-blue: hsl(220, 13%, 13%);
+$clr-dark-grayish-blue: hsl(219, 9%, 45%);
+$clr-grayish-blue: hsl(220, 14%, 75%);
+$clr-light-grayish-blue: hsl(223, 64%, 98%);
+
+$clr-white: hsl(0, 0%, 100%);
+$clr-black-light: hsl(0, 0%, 0%);
+
+/* ------------------------ */
+/*           FONTS          */
+/* ------------------------ */
+$fs-700: 4.4rem;
+$fs-600: 3rem;
+$fs-500: 1.7rem;
+$fs-400: 1.6rem;
+$fs-300: 1.5rem;
+$fs-200: 1.4rem;
+
+/* ------------------------ */
+/*          SHADOWS         */
+/* ------------------------ */
+$shadow-primary: 0 1px 6px rgba(0, 0, 0, 0.2), 0 2px 8px rgba(0, 0, 0, 0.15);
+$shadow-card: 0 0.8rem 1.5rem hsl(220 14% 75% / 0.8),
+  0 0.8rem 1.8rem hsl(220 14% 75% / 0.2);
