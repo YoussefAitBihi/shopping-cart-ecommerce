@@ -1,0 +1,31 @@
+.form-sneaker {
+  @media only screen and (width > $bp-mobile) {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    column-gap: 2rem;
+
+    & > * {
+      margin: 0;
+    }
+  }
+
+  &__group {
+    background-color: $clr-light-grayish-blue;
+    padding: 1.5rem 2rem;
+    border-radius: 0.8rem;
+
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__amount {
+    padding: 0.3rem;
+    font-weight: 700;
+    text-align: center;
+    border: 1px solid $clr-primary-orange-pale;
+
+    &:focus {
+      outline: 1px solid $clr-primary-orange;
+    }
+  }
+}

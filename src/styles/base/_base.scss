@@ -45,6 +45,11 @@ ol {
   list-style: none;
 }
 
+.main-content {
+  grid-row: 2 / 3;
+  grid-column: 2 / 3;
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
@@ -54,9 +59,4 @@ ol {
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
-}
-
-main {
-  grid-row: 2 / 3;
-  grid-column: 2 / 3;
 }

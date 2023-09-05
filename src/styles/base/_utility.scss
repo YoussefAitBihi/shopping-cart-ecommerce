@@ -13,3 +13,11 @@
 .separator {
   border-bottom: 2px solid hsl(223, 64%, 98%);
 }
+
+.flow > * + * {
+  margin-top: 2.2rem;
+}
+
+.flow-small > * + * {
+  margin-top: 1.2rem;
+}
