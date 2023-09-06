@@ -18,7 +18,7 @@ html {
 body > #root {
   display: grid;
   grid-template-rows: min-content 1fr;
-  grid-template-columns: minmax(1rem, 1fr) minmax(0, 120rem) minmax(1rem, 1fr);
+  grid-template-columns: minmax(2rem, 1fr) minmax(0, 120rem) minmax(2rem, 1fr);
 }
 
 img,
@@ -48,6 +48,10 @@ ol {
 .main-content {
   grid-row: 2 / 3;
   grid-column: 2 / 3;
+
+  @media only screen and (width <= $bp-mobile) {
+    grid-column: 1 / -1;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {

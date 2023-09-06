@@ -1,4 +1,8 @@
 .sneaker-details {
+  @media only screen and (width <= $bp-mobile) {
+    padding-inline: 1rem;
+  }
+
   &__header {
     font-weight: 700;
   }

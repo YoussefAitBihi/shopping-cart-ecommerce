@@ -33,6 +33,6 @@
 }
 
 .cart__button[aria-expanded="true"] ~ .cart-modal {
-  z-index: 2;
+  z-index: 10;
   opacity: 1;
 }

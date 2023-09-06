@@ -2,8 +2,8 @@
 /*        BREAKPOINTS       */
 /* ------------------------ */
 // $bp-mobile: 23.4375em;
-$bp-mobile: 47.375em;
 $bp-desktop: 90em;
+$bp-mobile: 47.375em;
 
 /* ------------------------ */
 /*          COLORS          */
@@ -29,6 +29,14 @@ $fs-500: 1.7rem;
 $fs-400: 1.6rem;
 $fs-300: 1.5rem;
 $fs-200: clamp(1.2rem, 3vw - 0.7rem, 1.4rem);
+
+/* ------------------------ */
+/*          SPACING         */
+/* ------------------------ */
+$column-gap-huge: 8rem;
+$column-gap-big: 3rem;
+$column-gap-medium: 2rem;
+$column-gap-small: 1.6rem;
 
 /* ------------------------ */
 /*          SHADOWS         */
