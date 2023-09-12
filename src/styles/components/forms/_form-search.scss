@@ -8,7 +8,7 @@
     display: block;
     max-width: 100%;
     flex: 1;
-    padding: 1rem 4rem;
+    padding: 1rem 5rem;
     border: 1px solid $clr-primary-orange-pale;
     border-radius: 2.5rem;
 
@@ -23,6 +23,9 @@
     top: 50%;
     translate: 0 -50%;
     background: none;
+
+    display: flex;
+    align-items: center;
   }
 
   &__icon {

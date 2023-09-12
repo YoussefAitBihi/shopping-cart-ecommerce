@@ -1,0 +1,10 @@
+.carousel-button-close {
+  position: absolute;
+  right: 0;
+  top: -3rem;
+  z-index: 1;
+
+  &:has(:hover, :focus) &__icon path {
+    fill: $clr-primary-orange;
+  }
+}

@@ -1,7 +1,8 @@
+import CartIcon from "../../Cart/CartIcon";
 import PrimaryButton from "../../UI/PrimaryButton";
-import CartIcon from "../../../assets/icon-cart.svg";
-import PlusIcon from "../../../assets/icon-plus.svg";
-import MinusIcon from "../../../assets/icon-minus.svg";
+
+import MinusIcon from "./MinusIcon";
+import PlusIcon from "./PlusIcon";
 
 const SneakerItemForm = () => {
   return (
@@ -9,7 +10,7 @@ const SneakerItemForm = () => {
       <div className="form-sneaker__group">
         <button type="button" className="form-sneaker__button">
           <span className="sr-only">Decrement the amount of sneaker</span>
-          <img src={MinusIcon} alt="Minus Icon" aria-hidden="true" />
+          <MinusIcon />
         </button>
         <input
           type="number"
@@ -22,16 +23,11 @@ const SneakerItemForm = () => {
         />
         <button type="button" className="form-sneaker__button">
           <span className="sr-only">Increment the amount of sneaker</span>
-          <img src={PlusIcon} alt="Plus Icon" aria-hidden="true" />
+          <PlusIcon />
         </button>
       </div>
       <PrimaryButton>
-        <img
-          src={CartIcon}
-          alt="Cart Icon"
-          className="primary-button__icon"
-          aria-hidden="true"
-        />
+        <CartIcon className="primary-button__icon" />
         <span>Add to cart</span>
       </PrimaryButton>
     </form>

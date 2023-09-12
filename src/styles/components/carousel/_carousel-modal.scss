@@ -1,0 +1,24 @@
+.carousel-modal-box {
+  height: 80vh;
+  width: 40vw;
+
+  position: fixed;
+  top: 10%;
+  left: 50%;
+  translate: -50% 0;
+
+  display: none;
+
+  @media only screen and (width <= $bp-mobile) {
+    display: none;
+  }
+}
+
+.carousel-modal {
+  width: 100%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  translate: -50% -50%;
+  overflow: hidden;
+}

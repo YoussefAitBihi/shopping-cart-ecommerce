@@ -78,6 +78,10 @@
       color: $clr-dark-blue;
       border-color: $clr-primary-orange;
     }
+
+    &--active {
+      border-color: $clr-primary-orange;
+    }
   }
 }
 

@@ -10,15 +10,29 @@
 @import "./layout/primary-navigation";
 @import "./layout/secondary-navigation";
 
-@import "./components/cart";
-@import "./components/cart-modal";
-@import "./components/cart-item";
-@import "./components/form-search";
-@import "./components/form-sneaker";
-@import "./components/hamburger-icon";
-@import "./components/profile";
-@import "./components/primary-button";
-@import "./components/sneaker-carousel";
-@import "./components/sneaker-details";
+@import "./components/buttons/primary-button";
+
+@import "./components/cart/cart";
+@import "./components/cart/cart-modal";
+@import "./components/cart/cart-item";
+
+@import "./components/carousel/carousel-backdrop";
+@import "./components/carousel/carousel-button";
+@import "./components/carousel/carousel-button-close";
+@import "./components/carousel/carousel-indicators";
+@import "./components/carousel/carousel-modal";
+@import "./components/carousel/carousel-slides";
+@import "./components/carousel/sneaker-carousel";
+
+@import "./components/forms/form-search";
+@import "./components/forms/form-sneaker";
+
+@import "./components/navigation/hamburger-icon";
+@import "./components/profile/profile";
+
+@import "./components/sneaker/sneaker-details";
+@import "./components/sneaker/sneaker-price";
+@import "./components/sneaker/sneaker-item";
 
 @import "./pages/sneaker";
+@import "./pages/sneakers";

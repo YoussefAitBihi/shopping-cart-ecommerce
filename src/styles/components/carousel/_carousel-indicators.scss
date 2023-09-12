@@ -1,0 +1,25 @@
+.carousel-indicators {
+  display: flex;
+  column-gap: $column-gap-medium;
+
+  @media only screen and (width <= $bp-mobile) {
+    display: none;
+  }
+
+  &__thumbnail {
+    border-radius: 0.8rem;
+    cursor: pointer;
+    border: 0.4rem solid transparent;
+    transition: all 0.3s;
+
+    &:hover,
+    &:focus {
+      opacity: 0.5;
+    }
+
+    &--active {
+      opacity: 0.5;
+      border-color: $clr-primary-orange;
+    }
+  }
+}

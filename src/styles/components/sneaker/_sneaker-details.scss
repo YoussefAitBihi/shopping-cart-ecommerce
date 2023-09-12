@@ -1,0 +1,21 @@
+.sneaker-details {
+  @media only screen and (width <= $bp-mobile) {
+    padding-inline: 1rem;
+  }
+
+  &__header {
+    font-weight: 700;
+  }
+
+  &__subtitle {
+    color: $clr-primary-orange;
+    font-size: $fs-200;
+    text-transform: uppercase;
+  }
+
+  &__title {
+    color: $clr-dark-blue;
+    font-size: $fs-800;
+    text-transform: capitalize;
+  }
+}

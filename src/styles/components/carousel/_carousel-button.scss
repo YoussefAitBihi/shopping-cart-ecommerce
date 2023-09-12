@@ -1,0 +1,43 @@
+.carousel-button {
+  width: 3.5rem;
+  height: 3.5rem;
+  background-color: $clr-white;
+  border-radius: 50%;
+
+  place-content: center;
+  display: none;
+
+  position: absolute;
+  top: 50%;
+  z-index: 3;
+  translate: 0 -50%;
+
+  @media only screen and (width <= $bp-mobile) {
+    display: grid;
+  }
+
+  &--prev {
+    left: -1.75rem;
+
+    @media only screen and (width <= $bp-mobile) {
+      left: 1rem;
+    }
+  }
+
+  &--next {
+    right: -1.75rem;
+
+    @media only screen and (width <= $bp-mobile) {
+      right: 1rem;
+    }
+  }
+
+  &__icon {
+    scale: 0.7;
+  }
+
+  &:hover &__icon > *,
+  &:focus &__icon > * {
+    stroke: $clr-primary-orange;
+  }
+}

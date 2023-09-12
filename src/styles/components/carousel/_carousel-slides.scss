@@ -1,0 +1,33 @@
+.carousel-slides {
+  @media only screen and (width > $bp-mobile) {
+    margin-bottom: 2rem;
+  }
+
+  &,
+  &__slide {
+    height: 35rem;
+
+    @media only screen and (width <= $bp-mobile) {
+      height: 50vh;
+    }
+  }
+
+  &__slide {
+    width: 100%;
+
+    position: absolute;
+    top: 0;
+    transition: translate 500ms;
+  }
+
+  &__image {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    object-position: top;
+
+    @media only screen and (width > $bp-mobile) {
+      border-radius: 0.8rem;
+    }
+  }
+}

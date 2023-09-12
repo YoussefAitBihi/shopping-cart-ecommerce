@@ -1,0 +1,35 @@
+.sneaker-price {
+  display: grid;
+  grid-template-columns: repeat(2, min-content) 1fr;
+  align-items: center;
+  column-gap: 1.5rem;
+
+  &__actual {
+    color: $clr-dark-blue;
+    font-size: $fs-700;
+    font-weight: 700;
+  }
+
+  &__discount {
+    padding: 0.3rem 0.7rem;
+    background-color: $clr-primary-orange-pale;
+    color: $clr-primary-orange;
+    font-weight: 700;
+    border-radius: 0.4rem;
+    line-height: 1;
+  }
+
+  &__old {
+    color: $clr-grayish-blue;
+    font-weight: 700;
+    text-decoration: line-through;
+
+    @media only screen and (width <= $bp-mobile) {
+      justify-self: end;
+    }
+
+    @media only screen and (width > $bp-mobile) {
+      grid-row: 2;
+    }
+  }
+}

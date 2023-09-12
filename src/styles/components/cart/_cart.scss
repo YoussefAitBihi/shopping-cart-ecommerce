@@ -1,0 +1,13 @@
+.cart {
+  display: flex;
+
+  &__button {
+    display: flex;
+    align-items: center;
+  }
+
+  &__button:has(:hover, :focus) &__icon path,
+  &__button[aria-expanded="true"] &__icon path {
+    fill: $clr-dark-blue;
+  }
+}

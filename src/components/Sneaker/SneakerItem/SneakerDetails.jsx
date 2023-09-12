@@ -1,4 +1,5 @@
 import SneakerItemForm from "./SneakerItemForm";
+import SneakerPrice from "./SneakerPrice";
 
 const SneakerDetails = () => {
   return (
@@ -14,20 +15,7 @@ const SneakerDetails = () => {
         Featuring a durable rubber outer sole, they’ll withstand everything the
         weather can offer.
       </p>
-      <div className="sneaker-details__price-box">
-        <div className="sneaker-details__actual-price">
-          <span className="sr-only">Discounted Price</span>
-          <span>$120.00</span>
-        </div>
-        <div className="sneaker-details__discount-percent">
-          <span className="sr-only">Discount Percent</span>
-          <span>50%</span>
-        </div>
-        <div className="sneaker-details__old-price">
-          <span className="sr-only">Old Price</span>
-          <span>$250.00</span>
-        </div>
-      </div>
+      <SneakerPrice />
       <SneakerItemForm />
     </div>
   );

@@ -1,0 +1,25 @@
+.sneaker-item {
+  background-color: $clr-white;
+  border-radius: 0.8rem;
+  box-shadow: $shadow-card;
+  overflow: hidden;
+
+  &__details {
+    padding: 2rem;
+  }
+
+  &__subtitle {
+    text-transform: uppercase;
+    color: $clr-primary-orange;
+    font-size: $fs-500;
+  }
+
+  &__title {
+    & > a {
+      font-size: $fs-600;
+      font-weight: 700;
+      color: $clr-dark-blue;
+      text-decoration: none;
+    }
+  }
+}

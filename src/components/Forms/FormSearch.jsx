@@ -1,4 +1,4 @@
-import SearchIcon from "../../assets/icon-search.svg";
+import SearchIcon from "./SearchIcon.jsx";
 
 const FormSearch = () => {
   return (
@@ -15,12 +15,7 @@ const FormSearch = () => {
         type="submit"
         aria-label="Click here to search"
       >
-        <img
-          src={SearchIcon}
-          alt="Search Icon"
-          className="form-search__icon"
-          aria-hidden="true"
-        />
+        <SearchIcon className="form-search__icon" />
       </button>
     </form>
   );

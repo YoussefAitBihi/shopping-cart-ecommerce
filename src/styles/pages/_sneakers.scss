@@ -1,0 +1,6 @@
+.sneakers-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(28rem, max-content));
+  justify-content: center;
+  gap: 2.5rem;
+}

@@ -12,7 +12,7 @@ const HamburgerIcon = () => {
       className="hamburger-icon"
       aria-controls="main-nav"
       aria-expanded={isButtonClicked}
-      aria-label={!isButtonClicked ? "Open the menu" : "Close the menu"}
+      aria-label={`Click to ${!isButtonClicked ? "open" : "close"} the menu`}
       onClick={handleButtonClick}
     >
       <span

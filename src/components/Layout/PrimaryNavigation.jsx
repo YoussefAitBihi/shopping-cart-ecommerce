@@ -1,7 +1,13 @@
+import { NavLink } from "react-router-dom";
 import FormSearch from "../Forms/FormSearch";
 import HamburgerIcon from "../UI/HamburgerIcon";
 
 const PrimaryNavigation = () => {
+  const handleActiveLink = ({ isActive }) =>
+    `primary-navigation__link ${
+      isActive ? "primary-navigation__link--active" : ""
+    }`;
+
   return (
     <>
       <HamburgerIcon />
@@ -12,14 +18,14 @@ const PrimaryNavigation = () => {
       >
         <ul className="primary-navigation__list">
           <li className="primary-navigation__item">
-            <a className="primary-navigation__link" href="#!">
+            <NavLink to="sneaker" className={handleActiveLink}>
               Home
-            </a>
+            </NavLink>
           </li>
           <li className="primary-navigation__item">
-            <a className="primary-navigation__link" href="#!">
+            <NavLink to="sneakers" className={handleActiveLink}>
               Sneakers
-            </a>
+            </NavLink>
           </li>
           <li className="primary-navigation__item">
             <FormSearch />
