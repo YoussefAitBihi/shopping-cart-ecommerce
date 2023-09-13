@@ -1,11 +1,18 @@
 import PrimaryHeader from "../../components/Layout/PrimaryHeader";
-import { Outlet } from "react-router-dom";
+import { Outlet, useParams } from "react-router-dom";
 
 const RootLayout = () => {
+  const params = useParams();
+  let className = "main-content";
+
+  if (params.id) {
+    className += " main-content--sneaker-page";
+  }
+
   return (
     <>
       <PrimaryHeader />
-      <main className="main-content">
+      <main className={className}>
         <Outlet />
       </main>
     </>

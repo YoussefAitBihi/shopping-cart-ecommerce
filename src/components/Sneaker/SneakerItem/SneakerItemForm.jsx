@@ -8,7 +8,10 @@ const SneakerItemForm = () => {
   return (
     <form className="form-sneaker flow-small">
       <div className="form-sneaker__group">
-        <button type="button" className="form-sneaker__button">
+        <button
+          type="button"
+          className="form-sneaker__button form-sneaker__button--decrement"
+        >
           <span className="sr-only">Decrement the amount of sneaker</span>
           <MinusIcon />
         </button>
@@ -21,7 +24,10 @@ const SneakerItemForm = () => {
           aria-label="The amount of sneaker"
           defaultValue="1"
         />
-        <button type="button" className="form-sneaker__button">
+        <button
+          type="button"
+          className="form-sneaker__button form-sneaker__button--increment"
+        >
           <span className="sr-only">Increment the amount of sneaker</span>
           <PlusIcon />
         </button>

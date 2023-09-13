@@ -8,6 +8,10 @@
     color: $clr-dark-blue;
     font-size: $fs-700;
     font-weight: 700;
+
+    & > ins {
+      text-decoration: none;
+    }
   }
 
   &__discount {

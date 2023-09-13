@@ -7,6 +7,7 @@ const CarouselSlides = ({ slides, currentSlide }) => {
           <li className="carousel-slides__item" key={currentIndex}>
             <figure
               className="carousel-slides__slide"
+              id={`carousel-slide-${currentIndex}`}
               tabIndex={translateValue === 0 ? "0" : "-1"}
               style={{
                 translate: `${translateValue}%`,

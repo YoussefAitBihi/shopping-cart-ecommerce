@@ -20,6 +20,10 @@ const Cart = () => {
       >
         <CartIcon className="cart__icon" />
         <span className="sr-only">Cart Menu</span>
+        <div className="cart__count">
+          <span className="cart__count-value">3</span>
+          <span className="sr-only">Number of cart items</span>
+        </div>
       </button>
       <CartModal />
     </div>
@@ -54,4 +58,19 @@ export default Cart;
 // E-commerce Project + Redux + React-Router-DOM // 16:00 - 19:00
 // Git/RWD // 1h
 
-// Portfolio: E-commerce, Design system,
+// Portfolio: E-commerce, Mapty App, Design system, Natours Landing page.
+// Complete React Course
+// Complete JS
+// Complete Git
+// Complete RWD
+
+// DONE: Change the color of link when it's active
+// DONE: Markup indicators with buttons
+// DONE: Re-Markup Old Price
+// DONE: Carousel Border Radius
+// DONE: Fix the Logo Anchor
+// DONE: When hover on the card
+// DONE: Add Number of items on the cart icon
+// DONE: Fix the padding inline problem on mobile
+// DONE: Fix the quantity form problem
+// TODO: Add Goes Back button

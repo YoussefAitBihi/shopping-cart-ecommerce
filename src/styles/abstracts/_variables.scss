@@ -29,20 +29,23 @@ $fs-500: 1.7rem;
 $fs-400: 1.6rem;
 $fs-300: 1.5rem;
 $fs-200: clamp(1.2rem, 3vw - 0.7rem, 1.4rem);
+$fs-100: 1rem;
 
 /* ------------------------ */
 /*          SPACING         */
 /* ------------------------ */
-$column-gap-huge: 8rem;
-$column-gap-big: 3rem;
-$column-gap-medium: 2rem;
-$column-gap-small: 1.6rem;
+$gap-900: clamp(4rem, 5vw + 1.5rem, 8rem);
+$gap-800: clamp(1rem, 4vw + 1rem, 6rem);
+$gap-700: 3rem;
+$gap-600: 2rem;
+$gap-500: 1.6rem;
 
 /* ------------------------ */
 /*          SHADOWS         */
 /* ------------------------ */
 $shadow-primary: 0 1px 6px rgba(0, 0, 0, 0.2), 0 2px 8px rgba(0, 0, 0, 0.15);
-$shadow-card: 0 0.8rem 1.5rem hsl(220 14% 75% / 0.8),
+$shadow-card-900: 0 0.8rem 1.5rem hsl(220 14% 75% / 0.8);
+$shadow-card-800: 0 0.8rem 1.5rem hsl(220 14% 75% / 0.8),
   0 0.8rem 1.8rem hsl(220 14% 75% / 0.2);
 
 /* ------------------------ */

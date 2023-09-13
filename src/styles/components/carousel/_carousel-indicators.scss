@@ -1,6 +1,6 @@
 .carousel-indicators {
   display: flex;
-  column-gap: $column-gap-medium;
+  column-gap: $gap-700;
 
   @media only screen and (width <= $bp-mobile) {
     display: none;

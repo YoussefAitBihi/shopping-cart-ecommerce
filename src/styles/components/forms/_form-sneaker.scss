@@ -18,9 +18,19 @@
     justify-content: space-between;
   }
 
-  &__button:hover,
-  &__button:focus {
-    opacity: 0.5;
+  &__button {
+    &--decrement {
+      margin-right: 2rem;
+    }
+
+    &--increment {
+      margin-left: 2rem;
+    }
+
+    &:hover,
+    &:focus {
+      opacity: 0.5;
+    }
   }
 
   &__amount {

@@ -4,10 +4,28 @@
   &__button {
     display: flex;
     align-items: center;
+    position: relative;
   }
 
   &__button:has(:hover, :focus) &__icon path,
   &__button[aria-expanded="true"] &__icon path {
     fill: $clr-dark-blue;
+  }
+
+  &__count {
+    position: absolute;
+    top: 0.4rem;
+    right: -0.7rem;
+  }
+
+  &__count-value {
+    display: grid;
+    place-content: center;
+    width: 1.5rem;
+    height: 1.5rem;
+    background-color: $clr-primary-orange;
+    color: $clr-white;
+    font-size: $fs-100;
+    border-radius: 50%;
   }
 }

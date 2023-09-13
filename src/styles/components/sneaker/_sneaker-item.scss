@@ -1,8 +1,14 @@
 .sneaker-item {
   background-color: $clr-white;
   border-radius: 0.8rem;
-  box-shadow: $shadow-card;
+  box-shadow: $shadow-card-900;
   overflow: hidden;
+  transition: box-shadow 0.2s;
+
+  &:hover,
+  &:focus {
+    box-shadow: $shadow-card-800;
+  }
 
   &__details {
     padding: 2rem;

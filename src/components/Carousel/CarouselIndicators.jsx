@@ -14,15 +14,21 @@ const CarouselIndicators = ({
             key={currentKey}
             onClick={activateIndicator.bind(null, currentKey)}
           >
-            <img
-              src={indicator}
-              alt={`Indicator ${currentKey + 1}`}
-              className={`carousel-indicators__thumbnail ${
-                translateValue === 0
-                  ? "carousel-indicators__thumbnail--active"
-                  : undefined
-              }`}
-            />
+            <button
+              className="carouse-indicators__button"
+              aria-controls={`carousel-slide-${currentKey}`}
+            >
+              <span className="sr-only">Click to get the image</span>
+              <img
+                src={indicator}
+                alt={`Indicator ${currentKey + 1}`}
+                className={`carousel-indicators__thumbnail ${
+                  translateValue === 0
+                    ? "carousel-indicators__thumbnail--active"
+                    : undefined
+                }`}
+              />
+            </button>
           </li>
         );
       })}

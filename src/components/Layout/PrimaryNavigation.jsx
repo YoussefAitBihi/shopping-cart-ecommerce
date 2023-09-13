@@ -18,12 +18,12 @@ const PrimaryNavigation = () => {
       >
         <ul className="primary-navigation__list">
           <li className="primary-navigation__item">
-            <NavLink to="sneaker" className={handleActiveLink}>
+            <NavLink to="" className={handleActiveLink} end>
               Home
             </NavLink>
           </li>
           <li className="primary-navigation__item">
-            <NavLink to="sneakers" className={handleActiveLink}>
+            <NavLink to="sneakers" className={handleActiveLink} end>
               Sneakers
             </NavLink>
           </li>

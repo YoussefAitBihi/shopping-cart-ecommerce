@@ -17,7 +17,7 @@ html {
 
 body > #root {
   display: grid;
-  grid-template-rows: min-content 1fr;
+  grid-template-rows: repeat(2, min-content);
   grid-template-columns: minmax(2rem, 1fr) minmax(0, 120rem) minmax(2rem, 1fr);
 }
 
@@ -43,19 +43,6 @@ button {
 ul,
 ol {
   list-style: none;
-}
-
-.main-content {
-  grid-row: 2 / 3;
-  grid-column: 2 / 3;
-
-  padding-block: clamp(2rem, 7vw, 4rem);
-
-  @media only screen and (width <= $bp-mobile) {
-    .main-content--sneaker-page {
-      grid-column: 1 / -1;
-    }
-  }
 }
 
 @media (prefers-reduced-motion: reduce) {

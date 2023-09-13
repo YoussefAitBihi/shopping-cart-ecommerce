@@ -15,9 +15,23 @@
 }
 
 .flow > * + * {
-  margin-top: 2.2rem;
+  margin-top: clamp(2rem, 10vw, 2.2rem);
 }
 
 .flow-small > * + * {
   margin-top: 1.02rem;
+}
+
+.main-content {
+  grid-row: 2 / 3;
+  grid-column: 2 / 3;
+
+  padding-block: clamp(2rem, 7vw, 4rem);
+
+  @media only screen and (width <= $bp-mobile) {
+    &--sneaker-page {
+      grid-column: 1 / -1;
+      padding-block: 0 clamp(2rem, 7vw, 4rem);
+    }
+  }
 }

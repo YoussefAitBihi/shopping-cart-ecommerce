@@ -1,5 +1,9 @@
 .sneaker-carousel {
   position: relative;
-  min-height: 50vh;
   overflow: hidden;
+  border-radius: 0.8rem;
+
+  @media only screen and (width <= $bp-mobile) {
+    border-radius: 0;
+  }
 }

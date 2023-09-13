@@ -3,6 +3,7 @@ import RootLayout from "./pages/Root/RootLayout";
 import SneakerDetailsPage from "./pages/Sneaker/SneakerDetails";
 import "./styles/_main.scss";
 import SneakersPage from "./pages/Sneaker/Sneakers";
+import HomePage from "./pages/Home/Home";
 
 const App = () => {
   const router = createBrowserRouter([
@@ -10,13 +11,14 @@ const App = () => {
       path: "/",
       element: <RootLayout />,
       children: [
-        {
-          path: "sneaker",
-          element: <SneakerDetailsPage />,
-        },
+        { index: true, element: <HomePage /> },
         {
           path: "sneakers",
           element: <SneakersPage />,
+        },
+        {
+          path: "/sneakers/:id",
+          element: <SneakerDetailsPage />,
         },
       ],
     },
@@ -26,6 +28,3 @@ const App = () => {
 };
 
 export default App;
-
-// Where to portal that element
-// Portal it
