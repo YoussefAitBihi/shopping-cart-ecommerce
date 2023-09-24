@@ -1,0 +1,25 @@
+.back-button {
+  position: fixed;
+  top: 9rem;
+  left: 2rem;
+
+  background-color: $clr-primary-orange-pale;
+  font-size: 1.6rem;
+  padding: 0.1em;
+  line-height: 1;
+  border-radius: 50%;
+
+  &:hover,
+  &:focus {
+    opacity: 0.7;
+  }
+
+  &__icon {
+    width: 2.5rem;
+    height: 2.5rem;
+
+    & > path {
+      fill: $clr-primary-orange;
+    }
+  }
+}

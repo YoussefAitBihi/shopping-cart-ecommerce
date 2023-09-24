@@ -1,31 +1,59 @@
 .cart {
   display: flex;
+  height: 100%;
 
   &__button {
     display: flex;
     align-items: center;
     position: relative;
+
+    &--animate {
+      animation: move 0.2s cubic-bezier(0.075, 0.82, 0.165, 1);
+    }
   }
 
-  &__button:has(:hover, :focus) &__icon path,
+  &__button:is(:hover, :focus) &__icon path,
   &__button[aria-expanded="true"] &__icon path {
     fill: $clr-dark-blue;
   }
 
   &__count {
     position: absolute;
-    top: 0.4rem;
+    top: 2.3rem;
     right: -0.7rem;
+
+    @media only screen and (width <= $bp-mobile) {
+      top: 0.2rem;
+      right: -0.8rem;
+    }
   }
 
   &__count-value {
-    display: grid;
-    place-content: center;
-    width: 1.5rem;
-    height: 1.5rem;
+    display: block;
+    padding: 0.2em 0.6em;
+    line-height: 1.2;
     background-color: $clr-primary-orange;
     color: $clr-white;
     font-size: $fs-100;
-    border-radius: 50%;
+    border-radius: 1.5rem;
+    box-shadow: 0 0 0 0.2rem $clr-white;
+  }
+}
+
+@keyframes move {
+  0% {
+    translate: 0;
+  }
+
+  33% {
+    translate: 1.2rem 0;
+  }
+
+  66% {
+    translate: -1.2rem 0;
+  }
+
+  100% {
+    translate: 0 0;
   }
 }

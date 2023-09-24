@@ -31,7 +31,7 @@ const CarouselModal = ({ params }) => {
             indicators={params.indicators}
             currentSlide={params.currentSlide}
             activateIndicator={params.activateIndicator}
-            style={ {scale: "0.9"} }
+            style={{ scale: "0.9" }}
           />
         </div>
       </div>

@@ -14,6 +14,7 @@
 
     & > img {
       border-radius: 8px;
+      height: 100%;
     }
   }
 
@@ -24,12 +25,26 @@
     margin-bottom: 0.5rem;
   }
 
-  &__amount {
-    margin-left: 1rem;
-    color: $clr-black-light;
+  &__details {
+    display: flex;
   }
 
-  &__trash {
-    cursor: pointer;
+  &__amount {
+    margin-left: 0.5rem;
+    color: $clr-dark-grayish-blue;
+  }
+
+  &__total {
+    color: $clr-black-light;
+    margin-left: 1rem;
+  }
+
+  &__action:is(:hover, :focus) &__trash > use {
+    fill: $clr-dark-grayish-blue;
+  }
+
+  &__fallback {
+    font-size: $fs-300;
+    color: $clr-grayish-blue;
   }
 }

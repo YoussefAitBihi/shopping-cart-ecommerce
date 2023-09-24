@@ -15,12 +15,12 @@ const SneakerItem = ({ item }) => {
         </Link>
       </figure>
       <div className="sneaker-item__details flow">
-        <header className="sneaker-item__header flow-small">
-          <h3 className="sneaker-item__subtitle">sneaker</h3>
+        <div className="flow-small">
+          <p className="sneaker-item__category">sneaker</p>
           <h2 className="sneaker-item__title">
             <Link to={item.id}>{item.title}</Link>
           </h2>
-        </header>
+        </div>
         <p className="sneaker-item__description">{item.description}</p>
         <SneakerPrice />
         <Link to={item.id} className="primary-button">

@@ -11,6 +11,7 @@
 @import "./layout/secondary-navigation";
 
 @import "./components/buttons/primary-button";
+@import "./components/buttons/back-button";
 
 @import "./components/cart/cart";
 @import "./components/cart/cart-modal";
@@ -37,3 +38,4 @@
 
 @import "./pages/sneaker";
 @import "./pages/sneakers";
+@import "./pages/error-boundary";

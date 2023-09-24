@@ -1,19 +1,13 @@
-import { useState } from "react";
-
-const HamburgerIcon = () => {
-  const [isButtonClicked, setIsButtonClicked] = useState(false);
-
-  const handleButtonClick = () => {
-    setIsButtonClicked((prevButtonState) => !prevButtonState);
-  };
-
+const HamburgerIcon = (props) => {
   return (
     <button
       className="hamburger-icon"
       aria-controls="main-nav"
-      aria-expanded={isButtonClicked}
-      aria-label={`Click to ${!isButtonClicked ? "open" : "close"} the menu`}
-      onClick={handleButtonClick}
+      aria-expanded={props.navigationState}
+      aria-label={`Click to ${
+        !props.navigationState ? "open" : "close"
+      } the menu`}
+      onClick={props.onClick}
     >
       <span
         className="hamburger-icon__layer hamburger-icon__layer--top"

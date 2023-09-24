@@ -1,29 +1,62 @@
-import { useState } from "react";
+import { useState, useContext, useEffect } from "react";
 import CartModal from "./CartModal";
 import CartIcon from "./CartIcon";
+import CartContext from "../../store/CartContext";
 
 const Cart = () => {
-  const [cartIsOpen, setCartIsOpen] = useState(false);
+  const [cartBtnClasses, setCartBtnClasses] = useState("cart__button");
 
-  const openCloseCartHandler = () => {
-    setCartIsOpen((prevCartState) => !prevCartState);
+  const cartContext = useContext(CartContext);
+
+  const countItems = cartContext.items.reduce((acc, item) => {
+    return acc + item.amount;
+  }, 0);
+
+  const showCartHandler = () => {
+    console.log("Show cart");
+    cartContext.showCart();
   };
 
+  const hideCartHandler = () => {
+    console.log("Hide cart");
+    cartContext.hideCart();
+  };
+
+  useEffect(() => {
+    if (countItems === 0) return;
+
+    const updateCartBtnId = setTimeout(() => {
+      setCartBtnClasses("cart__button cart__button--animate");
+    }, 50);
+
+    return () => {
+      clearTimeout(updateCartBtnId);
+      setCartBtnClasses("cart__button");
+    };
+  }, [countItems]);
+
   return (
-    <div className="cart">
+    <div
+      className="cart"
+      onMouseEnter={showCartHandler}
+      onMouseLeave={hideCartHandler}
+    >
       <button
-        className="cart__button"
-        aria-label={`${!cartIsOpen ? "Open" : "Close"} the cart modal`}
-        aria-expanded={cartIsOpen}
+        className={cartBtnClasses}
+        aria-label={`Click to ${
+          !cartContext.cartIsOpen ? "Open" : "Close"
+        } the cart modal`}
+        aria-expanded={cartContext.cartIsOpen}
         aria-controls="card-modal"
-        onClick={openCloseCartHandler}
       >
         <CartIcon className="cart__icon" />
         <span className="sr-only">Cart Menu</span>
-        <div className="cart__count">
-          <span className="cart__count-value">3</span>
-          <span className="sr-only">Number of cart items</span>
-        </div>
+        {countItems > 0 && (
+          <div className="cart__count">
+            <span className="sr-only">Number of cart items</span>
+            <span className="cart__count-value">{countItems}</span>
+          </div>
+        )}
       </button>
       <CartModal />
     </div>
@@ -32,45 +65,46 @@ const Cart = () => {
 
 export default Cart;
 
-// Project goal: V1
+// Project V1:
 
-// 1. Sneaker page: contains all sneakers
-// 2. Sneaker details: contains the details of a sneaker
-// 3. A cart: contains the order (redux, react-router)
-// 4. Deploy it
+// DONE: Manage (-/+) buttons
+// DONE: Take the amount of items
+// DONE: Add the item to the cart
+// DONE: Update the existing cart item (Update the amount)
+// DONE: Update the Number of cart items
+// DONE: Delete the item from the cart
+// DONE: Open/Close Cart
+// DONE: Style the Amount Input
+// DONE: Resize the Cart Modal
+// DONE: Animate Cart Icon when it updated
+// DONE: Add a back button
+// DONE: On hover show the cart
+// DONE: When click on the navigation overlay close the navigation
+// TODO: Add 10 products with carousel
+// TODO: Fetch product details
+// TODO: Fetch these products
+// TODO: Deal with Form Search
+// TODO: Deal with Carousel Modal
+// TODO: Change the variables name
+// TODO: Deploy the Project
 
-// 3.1 Create the design of sneaker card
-// 3.2 Add several sneakers on the DB
-// 3.3 Fetch all sneakers
-// 3.4 Do an order
+// Project V2: User can easily add/shop a product
 
-// Project goal: V2
+// TODO: Add an authentication system
+// TODO: Add a register system
+// TODO: Authenticated user can add/modify/delete his product
+// TODO: Add a cart page (When user can easily add/remove one or more items)
+// TODO: Add more category
+// TODO: Add Checkout so that user can buy a product
 
-// 1. Add an authentication/register
-// 2. Let's the user to add/edit/delete his sneaker
-// 3. Add a pagination
+// Shopping cart E-commerce
+// React Fundamentals
 
-// Program
+// NextJS
+// Git
 
-// E-commerce Project + Redux + React-Router-DOM // 08:30 - 12:00
-// NextJS // 12:30 - 13:45
+// Shopping cart E-commerce: Learn Supabase => 08:30 - 11:30
+// React Fundamentals: ContextApi           => 12:00 - 13:45
 
-// E-commerce Project + Redux + React-Router-DOM // 16:00 - 19:00
-// Git/RWD // 1h
-
-// Portfolio: E-commerce, Mapty App, Design system, Natours Landing page.
-// Complete React Course
-// Complete JS
-// Complete Git
-// Complete RWD
-
-// DONE: Change the color of link when it's active
-// DONE: Markup indicators with buttons
-// DONE: Re-Markup Old Price
-// DONE: Carousel Border Radius
-// DONE: Fix the Logo Anchor
-// DONE: When hover on the card
-// DONE: Add Number of items on the cart icon
-// DONE: Fix the padding inline problem on mobile
-// DONE: Fix the quantity form problem
-// TODO: Add Goes Back button
+// NextJS: Getting Started:                 => 03:30 - 06:30
+// Git: Practice Git                        => 07:00 - 07:30

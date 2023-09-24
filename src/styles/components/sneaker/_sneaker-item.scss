@@ -14,10 +14,11 @@
     padding: 2rem;
   }
 
-  &__subtitle {
+  &__category {
     text-transform: uppercase;
     color: $clr-primary-orange;
     font-size: $fs-500;
+    font-weight: bold;
   }
 
   &__title {

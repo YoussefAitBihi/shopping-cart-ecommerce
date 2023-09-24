@@ -1,82 +1,44 @@
-import { useState, useEffect, useCallback } from "react";
+import { json, useLoaderData } from "react-router-dom";
 import SneakerItem from "../../components/Sneaker/SneakerItem/SneakerItem";
-import Spinner from "../../components/UI/Spinner";
+import { firestoreURL } from "../../config/firebase";
 
-// Create a spinner loading
-
-// Create a loader which loads all sneakers
-// Manage Errors Responses
-// Manage Loading State
-
-// Create a loader which loads a specific sneaker with carousel
-// Create a useHttp hook
+// TODO: Load sneakers using loader
+// TODO: Load a spinner when we load sneakers
+// TODO: Handle errors
 
 const SneakersPage = () => {
-  const [sneakersState, setSneakersState] = useState({
-    sneakers: [],
-    isLoading: null,
-    errorMessage: "",
+  // Load Data
+  const { documents: sneakers } = useLoaderData();
+
+  const transformedSneakers = sneakers.map((sneaker) => {
+    return {
+      id: Object.values(sneaker.fields.id)[0],
+      title: Object.values(sneaker.fields.title)[0],
+      price: Object.values(sneaker.fields.price)[0],
+      thumbnail: Object.values(sneaker.fields.thumbnail)[0],
+      description: Object.values(sneaker.fields.description)[0],
+      discount: Object.values(sneaker.fields.discount)[0],
+    };
   });
-
-  const fetchSneakers = useCallback(async () => {
-    setSneakersState((prevSneakersState) => {
-      return {
-        ...prevSneakersState,
-        isLoading: true,
-      };
-    });
-
-    const response = await fetch(
-      "https://shopping-cart-ecommerce-default-rtdb.firebaseio.com/shopping/sneakers.json"
-    );
-
-    if (!response.ok) {
-      throw new Response(
-        JSON.stringify({ message: "Couldn't fetch sneakers" }),
-        { status: 500 }
-      );
-    }
-
-    const data = await response.json();
-
-    let transformedSneakers = [];
-    for (const key in data) {
-      transformedSneakers.push(data[key]);
-    }
-
-    setSneakersState((prevSneakersState) => {
-      return {
-        ...prevSneakersState,
-        sneakers: [...transformedSneakers],
-        isLoading: false,
-      };
-    });
-  }, []);
-
-  useEffect(() => {
-    fetchSneakers();
-  }, [fetchSneakers]);
-
-  let sneakersContent;
-  if (sneakersState.isLoading) {
-    sneakersContent = <Spinner />;
-  }
-
-  if (sneakersState.isLoading === false) {
-    sneakersContent = sneakersState.sneakers.map((sneaker) => {
-      return (
-        <li key={sneaker.id}>
-          <SneakerItem item={sneaker} />
-        </li>
-      );
-    });
-  }
 
   return (
     <ul className="sneakers-list" role="list">
-      {sneakersContent}
+      {transformedSneakers.map((sneaker) => (
+        <SneakerItem item={sneaker} key={sneaker.id} />
+      ))}
     </ul>
   );
 };
 
 export default SneakersPage;
+
+export const loader = async () => {
+  const response = await fetch(`${firestoreURL}/product`);
+
+  if (!response.ok)
+    throw json({ message: "Couldn't retrieve products" }, { status: 500 });
+
+  return response;
+};
+
+// In computing, memoization or memoisation is an optimization technique used primarily to speed up computer programs by storing the results of expensive function calls to pure functions and returning the cached result when the same inputs occur again.

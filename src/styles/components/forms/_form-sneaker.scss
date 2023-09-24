@@ -27,13 +27,13 @@
       margin-left: 2rem;
     }
 
-    &:hover,
-    &:focus {
+    &:is(:hover, :focus) {
       opacity: 0.5;
     }
   }
 
   &__amount {
+    width: 4rem;
     padding: 0.3rem;
     font-weight: 700;
     text-align: center;

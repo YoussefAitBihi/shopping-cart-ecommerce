@@ -1,0 +1,11 @@
+.error-boundary {
+  grid-row: 2 / 3;
+  grid-column: 2 / 3;
+
+  padding-block: clamp(2rem, 7vw, 4rem);
+  text-align: center;
+
+  &__heading {
+    color: $clr-dark-blue;
+  }
+}

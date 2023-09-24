@@ -1,19 +1,17 @@
+import { createPortal } from "react-dom";
 import SneakerCarousel from "../../components/Sneaker/SneakerItem/SneakerCarousel";
 import SneakerDetails from "../../components/Sneaker/SneakerItem/SneakerDetails";
-
-// Load Images (carousel)
-// Load sneaker details
+import BackButton from "../../components/UI/BackButton";
 
 const SneakerDetailsPage = () => {
-  // const fetchSneakerDetails = async() => {
-  //   fetch("https://shopping-cart-ecommerce-default-rtdb.firebaseio.com/")
-  // };
-
   return (
-    <article className="article-sneaker flow">
-      <SneakerCarousel />
-      <SneakerDetails />
-    </article>
+    <>
+      {createPortal(<BackButton />, document.getElementById("back"))}
+      <article className="article-sneaker flow">
+        <SneakerCarousel />
+        <SneakerDetails />
+      </article>
+    </>
   );
 };
 

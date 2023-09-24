@@ -1,27 +1,43 @@
-import ImageProductThumbnail from "../../assets/image-product-1-thumbnail.jpg";
-import TrashIcon from "../../assets/icon-delete.svg";
+import { useContext } from "react";
+import CartContext from "../../store/CartContext";
+import CartTrashIcon from "./CartTrashIcon";
 
-const CartItem = () => {
+const CartItem = (props) => {
+  const cartContext = useContext(CartContext);
+
+  const price = `$${props.price.toFixed(2)}`;
+  const totalAmount = `$${(props.price * props.amount).toFixed(2)}`;
+
+  const removeItemHandler = () => {
+    cartContext.removeItem(props.id);
+  };
+
   return (
     <li className="cart-item">
       <div className="cart-item__image">
-        <img src={ImageProductThumbnail} alt="Image Product Thumbnail" />
+        <img src={props.thumbnail} alt="Image Product Thumbnail" />
       </div>
       <div className="cart-item__middle">
-        <h3 className="cart-item__title">Fall Limited Edition Sneakers</h3>
-        <p className="cart-item__details">
-          <span className="cart-item__price">$125.00 x 3</span>
-          <strong className="cart-item__amount">$375.00</strong>
-        </p>
+        <h3 className="cart-item__title">{props.title}</h3>
+        <div className="cart-item__details">
+          <p className="cart-item__price">
+            <span className="sr-only">{`The price of ${props.title} is :`}</span>
+            <span>{price}</span>
+          </p>
+          <p className="cart-item__amount">
+            <span className="sr-only">{`The amount of ${props.title} is :`}</span>
+            <span>x {props.amount}</span>
+          </p>
+          <p className="cart-item__total">
+            <span className="sr-only">{`The total amount of ${props.title} is :`}</span>
+            <strong>{totalAmount}</strong>
+          </p>
+        </div>
       </div>
-      <div className="cart-item__action">
-        <img
-          src={TrashIcon}
-          alt="Trash Icon"
-          className="cart-item__trash"
-          aria-hidden="true"
-        />
-      </div>
+      <button className="cart-item__action" onClick={removeItemHandler}>
+        <span className="sr-only">To delete click here</span>
+        <CartTrashIcon className="cart-item__trash" />
+      </button>
     </li>
   );
 };

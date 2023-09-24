@@ -1,8 +1,10 @@
 import PrimaryHeader from "../../components/Layout/PrimaryHeader";
-import { Outlet, useParams } from "react-router-dom";
+import { Outlet, useParams, useNavigation } from "react-router-dom";
+import Spinner from "../../components/UI/Spinner";
 
 const RootLayout = () => {
   const params = useParams();
+  const navigation = useNavigation();
   let className = "main-content";
 
   if (params.id) {
@@ -12,6 +14,7 @@ const RootLayout = () => {
   return (
     <>
       <PrimaryHeader />
+      {navigation.state === "loading" && <Spinner />}
       <main className={className}>
         <Outlet />
       </main>

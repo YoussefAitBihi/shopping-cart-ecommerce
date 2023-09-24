@@ -1,32 +1,55 @@
+import { useState } from "react";
 import CartIcon from "../../Cart/CartIcon";
 import PrimaryButton from "../../UI/PrimaryButton";
 
 import MinusIcon from "./MinusIcon";
 import PlusIcon from "./PlusIcon";
 
-const SneakerItemForm = () => {
+const SneakerItemForm = (props) => {
+  const [amount, setAmount] = useState(1);
+
+  const incrementAmountHandler = (event) => {
+    event.preventDefault();
+    if (amount === 10) return;
+
+    setAmount((prevAmountState) => ++prevAmountState);
+  };
+
+  const decrementAmountHandler = (event) => {
+    event.preventDefault();
+    if (amount === 1) return;
+
+    setAmount((prevAmountState) => --prevAmountState);
+  };
+
+  const submitAmountHandler = (event) => {
+    event.preventDefault();
+
+    props.onAddItemToCart(amount);
+  };
+
   return (
-    <form className="form-sneaker flow-small">
+    <form className="form-sneaker flow-small" onSubmit={submitAmountHandler}>
       <div className="form-sneaker__group">
         <button
           type="button"
           className="form-sneaker__button form-sneaker__button--decrement"
+          onClick={decrementAmountHandler}
         >
           <span className="sr-only">Decrement the amount of sneaker</span>
           <MinusIcon />
         </button>
         <input
-          type="number"
-          min="1"
-          max="10"
-          step="1"
+          type="text"
+          readOnly
           className="form-sneaker__amount"
           aria-label="The amount of sneaker"
-          defaultValue="1"
+          value={amount}
         />
         <button
           type="button"
           className="form-sneaker__button form-sneaker__button--increment"
+          onClick={incrementAmountHandler}
         >
           <span className="sr-only">Increment the amount of sneaker</span>
           <PlusIcon />
