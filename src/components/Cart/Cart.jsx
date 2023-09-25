@@ -13,12 +13,10 @@ const Cart = () => {
   }, 0);
 
   const showCartHandler = () => {
-    console.log("Show cart");
     cartContext.showCart();
   };
 
   const hideCartHandler = () => {
-    console.log("Hide cart");
     cartContext.hideCart();
   };
 
@@ -80,9 +78,10 @@ export default Cart;
 // DONE: Add a back button
 // DONE: On hover show the cart
 // DONE: When click on the navigation overlay close the navigation
-// TODO: Add 10 products with carousel
-// TODO: Fetch product details
-// TODO: Fetch these products
+// DONE: Fetch product details
+// DONE: Fetch these products
+// DONE: Add 10 products with carousel
+// DONE: Solve the design issues
 // TODO: Deal with Form Search
 // TODO: Deal with Carousel Modal
 // TODO: Change the variables name

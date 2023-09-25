@@ -6,7 +6,17 @@
     display: none;
   }
 
+  &__item {
+    width: 25%;
+  }
+
+  &__button {
+    height: 100%;
+  }
+
   &__thumbnail {
+    height: 100%;
+    object-fit: cover;
     border-radius: 0.8rem;
     cursor: pointer;
     border: 0.4rem solid transparent;

@@ -22,7 +22,7 @@ const SneakerItem = ({ item }) => {
           </h2>
         </div>
         <p className="sneaker-item__description">{item.description}</p>
-        <SneakerPrice />
+        <SneakerPrice price={item.price} discount={item.discount} />
         <Link to={item.id} className="primary-button">
           Show more
         </Link>

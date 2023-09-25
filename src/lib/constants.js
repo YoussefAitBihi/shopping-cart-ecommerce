@@ -1,0 +1,3 @@
+export const SUPABASE_URL = "https://daaqwyeoueciqoladhis.supabase.co";
+export const SUPABASE_ANON_KEY =
+  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRhYXF3eWVvdWVjaXFvbGFkaGlzIiwicm9sZSI6ImFub24iLCJpYXQiOjE2OTUzNzMzNjMsImV4cCI6MjAxMDk0OTM2M30.OlNDbixvUVmi0P5TOsXHfxcMbXf4FBX5Oz2t-thJ2Nw";

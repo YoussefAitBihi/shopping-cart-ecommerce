@@ -14,7 +14,7 @@ const CarouselSlides = ({ slides, currentSlide }) => {
               }}
             >
               <img
-                src={slide}
+                src={slide.image}
                 alt={`Image product ${currentIndex}`}
                 className="carousel-slides__image"
               />

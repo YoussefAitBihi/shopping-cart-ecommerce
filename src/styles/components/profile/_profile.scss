@@ -4,10 +4,11 @@
 
   &__avatar {
     border-radius: 50%;
+    border: 2px solid transparent;
   }
 
   &__avatar:hover,
   &__avatar:focus {
-    border: 2px solid $clr-primary-orange;
+    border-color: $clr-primary-orange;
   }
 }

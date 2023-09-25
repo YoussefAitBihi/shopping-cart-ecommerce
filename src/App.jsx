@@ -1,6 +1,8 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import RootLayout from "./pages/Root/RootLayout";
-import SneakerDetailsPage from "./pages/Sneaker/SneakerDetails";
+import SneakerDetailsPage, {
+  loader as sneakerDetailsLoader,
+} from "./pages/Sneaker/SneakerDetails";
 import "./styles/_main.scss";
 import SneakersPage from "./pages/Sneaker/Sneakers";
 import HomePage from "./pages/Home/Home";
@@ -24,7 +26,7 @@ const App = () => {
         {
           path: "/sneakers/:id",
           element: <SneakerDetailsPage />,
-          // loader: sneakerDetailsLoader,
+          loader: sneakerDetailsLoader,
         },
       ],
     },

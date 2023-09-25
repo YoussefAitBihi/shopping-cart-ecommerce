@@ -15,12 +15,12 @@ const CarouselIndicators = ({
             onClick={activateIndicator.bind(null, currentKey)}
           >
             <button
-              className="carouse-indicators__button"
+              className="carousel-indicators__button"
               aria-controls={`carousel-slide-${currentKey}`}
             >
               <span className="sr-only">Click to get the image</span>
               <img
-                src={indicator}
+                src={indicator.image}
                 alt={`Indicator ${currentKey + 1}`}
                 className={`carousel-indicators__thumbnail ${
                   translateValue === 0
