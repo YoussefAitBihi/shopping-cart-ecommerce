@@ -1,15 +1,16 @@
-import { useContext } from "react";
+import { useDispatch } from "react-redux";
 import CartContext from "../../store/CartContext";
 import CartTrashIcon from "./CartTrashIcon";
+import { REMOVE_ITEM } from "../../store";
 
 const CartItem = (props) => {
-  const cartContext = useContext(CartContext);
+  const dispatch = useDispatch();
 
   const price = `$${props.price.toFixed(2)}`;
   const totalAmount = `$${(props.price * props.amount).toFixed(2)}`;
 
   const removeItemHandler = () => {
-    cartContext.removeItem(props.id);
+    dispatch({ type: REMOVE_ITEM, id: props.id });
   };
 
   return (

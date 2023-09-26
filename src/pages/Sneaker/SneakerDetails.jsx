@@ -8,8 +8,6 @@ import { supabase } from "../../lib/api";
 const SneakerDetailsPage = () => {
   const [sneaker] = useLoaderData();
 
-  console.log(sneaker.images);
-
   return (
     <>
       {createPortal(<BackButton />, document.getElementById("back"))}
@@ -30,9 +28,7 @@ export const loader = async ({ request, params }) => {
     .select("*, images (*)")
     .eq("id", id);
 
-  if (error) {
-    throw json({ message: "Couldn't fetch sneaker" }, { status: 500 });
-  }
+  if (error) throw json({ message: "Couldn't fetch sneaker" }, { status: 500 });
 
   return sneaker;
 };

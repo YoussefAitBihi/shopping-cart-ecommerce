@@ -3,11 +3,11 @@ import { createContext } from "react";
 const CartContext = createContext({
   items: [],
   cartIsOpen: false,
-  openCloseCart: () => {},
+  cartIsAnimated: false,
   addItem: (item) => {},
   removeItem: (id) => {},
-  showCart: () => {},
-  hideCart: () => {},
+  openCart: () => {},
+  closeCart: () => {},
 });
 
 export default CartContext;

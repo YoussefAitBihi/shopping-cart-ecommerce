@@ -1,16 +1,15 @@
-import { useContext } from "react";
 import PrimaryButton from "../UI/PrimaryButton";
 import CartItem from "./CartItem";
-import CartContext from "../../store/CartContext";
+import { useSelector } from "react-redux";
 
 const CartModal = (props) => {
-  const cartContext = useContext(CartContext);
+  const items = useSelector((state) => state.items);
 
   let cartContent = <p className="cart-modal__fallback">Your cart is empty</p>;
 
   cartContent =
-    cartContext.items.length > 0
-      ? cartContext.items.map((item) => (
+    items.length > 0
+      ? items.map((item) => (
           <CartItem
             key={item.id}
             id={item.id}

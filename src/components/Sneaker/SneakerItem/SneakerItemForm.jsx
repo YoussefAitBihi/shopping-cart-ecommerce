@@ -25,7 +25,7 @@ const SneakerItemForm = (props) => {
   const submitAmountHandler = (event) => {
     event.preventDefault();
 
-    props.onAddItemToCart(amount);
+    props.onAddItem(amount);
   };
 
   return (

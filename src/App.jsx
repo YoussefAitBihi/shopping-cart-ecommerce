@@ -8,7 +8,8 @@ import SneakersPage from "./pages/Sneaker/Sneakers";
 import HomePage from "./pages/Home/Home";
 import { loader as sneakersLoader } from "./pages/Sneaker/Sneakers";
 import ErrorPage from "./pages/ErrorBoundary/Error";
-import CartProvider from "./store/CartProvider";
+import { Provider } from "react-redux";
+import store from "./store/index";
 
 const App = () => {
   const router = createBrowserRouter([
@@ -33,9 +34,9 @@ const App = () => {
   ]);
 
   return (
-    <CartProvider>
+    <Provider store={store}>
       <RouterProvider router={router} />
-    </CartProvider>
+    </Provider>
   );
 };
 

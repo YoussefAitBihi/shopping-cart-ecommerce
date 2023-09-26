@@ -1,10 +1,13 @@
-import { useReducer } from "react";
+import { useReducer, useEffect } from "react";
 import CartContext from "./CartContext";
 import cartReducer from "./cartReducer";
+
+export const SHOW_CART = "SHOW_CART";
 
 const defaultCartState = {
   items: [],
   cartIsOpen: false,
+  cartIsAnimated: false,
 };
 
 const CartProvider = ({ children }) => {
@@ -13,12 +16,12 @@ const CartProvider = ({ children }) => {
     defaultCartState
   );
 
-  const showCartHandler = () => {
-    dispatchCartAction({ type: "SHOW_CART" });
+  const openCartHandler = () => {
+    dispatchCartAction({ type: "OPEN_CART" });
   };
 
-  const hideCartHandler = () => {
-    dispatchCartAction({ type: "HIDE_CART" });
+  const closeCartHandler = () => {
+    dispatchCartAction({ type: "CLOSE_CART" });
   };
 
   const addItemToCart = (item) => {
@@ -29,13 +32,32 @@ const CartProvider = ({ children }) => {
     dispatchCartAction({ type: "REMOVE_ITEM", id: id });
   };
 
+  const countItems = cartState.items.reduce((acc, item) => {
+    return acc + item.amount;
+  }, 0);
+
+  useEffect(() => {
+    if (countItems === 0) return;
+
+    dispatchCartAction({ type: "CART_ANIMATION" });
+
+    const updateCartBtnId = setTimeout(() => {
+      dispatchCartAction({ type: "CART_ANIMATION" });
+    }, 250);
+
+    return () => {
+      clearTimeout(updateCartBtnId);
+    };
+  }, [countItems]);
+
   const cartContext = {
     items: cartState.items,
     cartIsOpen: cartState.cartIsOpen,
+    cartIsAnimated: cartState.cartIsAnimated,
     addItem: addItemToCart,
     removeItem: removeItemFromCart,
-    showCart: showCartHandler,
-    hideCart: hideCartHandler,
+    openCart: openCartHandler,
+    closeCart: closeCartHandler,
   };
 
   return (

@@ -1,8 +1,8 @@
-const SneakerPrice = ({ price, discount }) => {
-  const formattedOriginalPrice = `$${price.toFixed(2)}`;
-  const formattedDiscountPrice = `$${(price - (price * discount) / 100).toFixed(
-    2
-  )}`;
+const SneakerPrice = ({ originalPrice, discountedPrice, discount }) => {
+  const formattedOriginalPrice = `$${originalPrice}`;
+  const formattedDiscountPrice = `$${discountedPrice}`;
+
+  // console.log(formattedDiscountPrice);
   return (
     <div className="sneaker-price">
       <p className="sneaker-price__actual">
@@ -11,7 +11,7 @@ const SneakerPrice = ({ price, discount }) => {
       </p>
       <p className="sneaker-price__discount">
         <span className="sr-only">Discount Percent: </span>
-        <span>50%</span>
+        <span>{`${discount}%`}</span>
       </p>
       <p className="sneaker-price__old">
         <span className="sr-only">Original Price: </span>

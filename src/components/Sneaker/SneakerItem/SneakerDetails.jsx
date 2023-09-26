@@ -1,21 +1,30 @@
+import { ADD_ITEM } from "../../../store";
 import SneakerItemForm from "./SneakerItemForm";
 import SneakerPrice from "./SneakerPrice";
-import { useContext } from "react";
-import CartContext from "../../../store/CartContext";
+import { useDispatch } from "react-redux";
 
 const SneakerDetails = ({ sneaker }) => {
-  const cartContext = useContext(CartContext);
-  
+  const dispatch = useDispatch();
+
+  const discountedPrice = `${
+    sneaker.price - (sneaker.price * sneaker.discount) / 100
+  }`;
+
+  console.log(discountedPrice);
+
   const onAddItemToCart = (amount) => {
     const item = {
       id: sneaker.id,
       title: sneaker.title,
-      price: sneaker.price,
+      price: +discountedPrice,
       thumbnail: sneaker.thumbnail,
       amount,
     };
 
-    cartContext.addItem(item);
+    dispatch({
+      type: ADD_ITEM,
+      item: item,
+    });
   };
 
   return (
@@ -25,8 +34,12 @@ const SneakerDetails = ({ sneaker }) => {
         <h1 className="sneaker-details__title">{sneaker.title}</h1>
       </header>
       <p className="sneaker-details__description">{sneaker.description}</p>
-      <SneakerPrice price={sneaker.price} discount={sneaker.discount} />
-      <SneakerItemForm onAddItemToCart={onAddItemToCart} />
+      <SneakerPrice
+        originalPrice={sneaker.price}
+        discountedPrice={discountedPrice}
+        discount={sneaker.discount}
+      />
+      <SneakerItemForm onAddItem={onAddItemToCart} />
     </div>
   );
 };

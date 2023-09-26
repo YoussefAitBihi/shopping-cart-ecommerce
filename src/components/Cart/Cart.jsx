@@ -1,50 +1,66 @@
-import { useState, useContext, useEffect } from "react";
+import { useEffect } from "react";
 import CartModal from "./CartModal";
 import CartIcon from "./CartIcon";
-import CartContext from "../../store/CartContext";
+import { useDispatch, useSelector } from "react-redux";
+import { OPEN_CART, CLOSE_CART, CART_COUNT } from "../../store";
 
 const Cart = () => {
-  const [cartBtnClasses, setCartBtnClasses] = useState("cart__button");
+  // const countItems = cartContext.items.reduce((acc, item) => {
+  //   return acc + item.amount;
+  // }, 0);
 
-  const cartContext = useContext(CartContext);
+  const dispatch = useDispatch();
 
-  const countItems = cartContext.items.reduce((acc, item) => {
-    return acc + item.amount;
-  }, 0);
+  const { cartIsOpen, cartIsAnimated, countItems, items } = useSelector(
+    (state) => {
+      return state;
+    }
+  );
 
-  const showCartHandler = () => {
-    cartContext.showCart();
-  };
-
-  const hideCartHandler = () => {
-    cartContext.hideCart();
-  };
+  useEffect(() => {
+    dispatch({ type: CART_COUNT });
+  }, [items, dispatch]);
 
   useEffect(() => {
     if (countItems === 0) return;
 
+    dispatch({ type: "CART_ANIMATION" });
+
     const updateCartBtnId = setTimeout(() => {
-      setCartBtnClasses("cart__button cart__button--animate");
-    }, 50);
+      dispatch({ type: "CART_ANIMATION" });
+    }, 250);
 
     return () => {
       clearTimeout(updateCartBtnId);
-      setCartBtnClasses("cart__button");
     };
-  }, [countItems]);
+  }, [countItems, dispatch]);
+
+  const openCartHandler = () => {
+    dispatch({ type: OPEN_CART });
+  };
+
+  const closeCartHandler = () => {
+    dispatch({ type: CLOSE_CART });
+  };
+
+  const cartBtnClasses = `cart__button ${
+    cartIsAnimated ? "cart__button--animate" : ""
+  }`;
+
+  const ariaLabel = !cartIsOpen
+    ? "Put the mouse on the cart icon to open the cart modal"
+    : "Put the mouse out of the cart icon to close the cart modal";
 
   return (
     <div
       className="cart"
-      onMouseEnter={showCartHandler}
-      onMouseLeave={hideCartHandler}
+      onMouseEnter={openCartHandler}
+      onMouseLeave={closeCartHandler}
     >
       <button
         className={cartBtnClasses}
-        aria-label={`Click to ${
-          !cartContext.cartIsOpen ? "Open" : "Close"
-        } the cart modal`}
-        aria-expanded={cartContext.cartIsOpen}
+        aria-label={ariaLabel}
+        aria-expanded={cartIsOpen}
         aria-controls="card-modal"
       >
         <CartIcon className="cart__icon" />
@@ -82,8 +98,9 @@ export default Cart;
 // DONE: Fetch these products
 // DONE: Add 10 products with carousel
 // DONE: Solve the design issues
-// TODO: Deal with Form Search
+// TODO: Switch to Redux
 // TODO: Deal with Carousel Modal
+// TODO: Deal with Form Search
 // TODO: Change the variables name
 // TODO: Deploy the Project
 

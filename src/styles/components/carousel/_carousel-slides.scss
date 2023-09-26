@@ -1,4 +1,8 @@
 .carousel-slides {
+  &:is(:hover, :focus) {
+    cursor: zoom-in;
+  }
+
   @media only screen and (width > $bp-mobile) {
     margin-bottom: 2rem;
   }

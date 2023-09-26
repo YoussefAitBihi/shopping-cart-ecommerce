@@ -15,6 +15,10 @@ html {
   scroll-behavior: smooth;
 }
 
+body {
+  min-height: 100vh;
+}
+
 body > #root {
   display: grid;
   grid-template-rows: repeat(2, min-content);

@@ -2,6 +2,8 @@ import { Link } from "react-router-dom";
 import SneakerPrice from "./SneakerPrice";
 
 const SneakerItem = ({ item }) => {
+  const discountedPrice = `${item.price - (item.price * item.discount) / 100}`;
+
   return (
     <article className="sneaker-item">
       <figure className="sneaker-item__thumbnail-box">
@@ -22,7 +24,11 @@ const SneakerItem = ({ item }) => {
           </h2>
         </div>
         <p className="sneaker-item__description">{item.description}</p>
-        <SneakerPrice price={item.price} discount={item.discount} />
+        <SneakerPrice
+          originalPrice={item.price}
+          discount={item.discount}
+          discountedPrice={discountedPrice}
+        />
         <Link to={item.id} className="primary-button">
           Show more
         </Link>
