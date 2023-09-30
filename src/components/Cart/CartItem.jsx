@@ -1,7 +1,6 @@
 import { useDispatch } from "react-redux";
-import CartContext from "../../store/CartContext";
 import CartTrashIcon from "./CartTrashIcon";
-import { REMOVE_ITEM } from "../../store";
+import { cartActions } from "../../store/cart-slice";
 
 const CartItem = (props) => {
   const dispatch = useDispatch();
@@ -10,7 +9,7 @@ const CartItem = (props) => {
   const totalAmount = `$${(props.price * props.amount).toFixed(2)}`;
 
   const removeItemHandler = () => {
-    dispatch({ type: REMOVE_ITEM, id: props.id });
+    dispatch(cartActions.removeItemFromCart(props.id));
   };
 
   return (

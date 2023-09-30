@@ -4,9 +4,10 @@ import SneakerDetailsPage, {
   loader as sneakerDetailsLoader,
 } from "./pages/Sneaker/SneakerDetails";
 import "./styles/_main.scss";
-import SneakersPage from "./pages/Sneaker/Sneakers";
 import HomePage from "./pages/Home/Home";
-import { loader as sneakersLoader } from "./pages/Sneaker/Sneakers";
+import SneakersPage, {
+  loader as sneakersLoader,
+} from "./pages/Sneaker/Sneakers";
 import ErrorPage from "./pages/ErrorBoundary/Error";
 import { Provider } from "react-redux";
 import store from "./store/index";

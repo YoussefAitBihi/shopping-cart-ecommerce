@@ -44,7 +44,7 @@ button {
   cursor: pointer;
 }
 
-ul,
+ul[role="list"],
 ol {
   list-style: none;
 }

@@ -2,45 +2,35 @@ import { useEffect } from "react";
 import CartModal from "./CartModal";
 import CartIcon from "./CartIcon";
 import { useDispatch, useSelector } from "react-redux";
-import { OPEN_CART, CLOSE_CART, CART_COUNT } from "../../store";
+import { cartActions } from "../../store/cart-slice";
 
 const Cart = () => {
-  // const countItems = cartContext.items.reduce((acc, item) => {
-  //   return acc + item.amount;
-  // }, 0);
-
   const dispatch = useDispatch();
 
-  const { cartIsOpen, cartIsAnimated, countItems, items } = useSelector(
-    (state) => {
-      return state;
-    }
-  );
+  const { cartIsOpen, cartIsAnimated, quantity } = useSelector((state) => {
+    return state.cart;
+  });
 
   useEffect(() => {
-    dispatch({ type: CART_COUNT });
-  }, [items, dispatch]);
+    if (quantity === 0) return;
 
-  useEffect(() => {
-    if (countItems === 0) return;
-
-    dispatch({ type: "CART_ANIMATION" });
+    dispatch(cartActions.animateCart());
 
     const updateCartBtnId = setTimeout(() => {
-      dispatch({ type: "CART_ANIMATION" });
+      dispatch(cartActions.animateCart());
     }, 250);
 
     return () => {
       clearTimeout(updateCartBtnId);
     };
-  }, [countItems, dispatch]);
+  }, [quantity, dispatch]);
 
   const openCartHandler = () => {
-    dispatch({ type: OPEN_CART });
+    dispatch(cartActions.openCart());
   };
 
   const closeCartHandler = () => {
-    dispatch({ type: CLOSE_CART });
+    dispatch(cartActions.closeCart());
   };
 
   const cartBtnClasses = `cart__button ${
@@ -65,10 +55,10 @@ const Cart = () => {
       >
         <CartIcon className="cart__icon" />
         <span className="sr-only">Cart Menu</span>
-        {countItems > 0 && (
+        {quantity > 0 && (
           <div className="cart__count">
-            <span className="sr-only">Number of cart items</span>
-            <span className="cart__count-value">{countItems}</span>
+            <p className="sr-only">Number of cart items</p>
+            <p className="cart__count-value">{quantity}</p>
           </div>
         )}
       </button>
@@ -98,7 +88,7 @@ export default Cart;
 // DONE: Fetch these products
 // DONE: Add 10 products with carousel
 // DONE: Solve the design issues
-// TODO: Switch to Redux
+// DONE: Switch to Redux
 // TODO: Deal with Carousel Modal
 // TODO: Deal with Form Search
 // TODO: Change the variables name
@@ -113,14 +103,11 @@ export default Cart;
 // TODO: Add more category
 // TODO: Add Checkout so that user can buy a product
 
-// Shopping cart E-commerce
-// React Fundamentals
-
-// NextJS
-// Git
-
 // Shopping cart E-commerce: Learn Supabase => 08:30 - 11:30
 // React Fundamentals: ContextApi           => 12:00 - 13:45
 
 // NextJS: Getting Started:                 => 03:30 - 06:30
 // Git: Practice Git                        => 07:00 - 07:30
+
+// Register System (Add a new user, Modify the profile (Modify Avatar, Password), Delete profile).
+//

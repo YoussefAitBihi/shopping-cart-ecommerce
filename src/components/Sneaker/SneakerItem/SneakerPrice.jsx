@@ -1,8 +1,9 @@
 const SneakerPrice = ({ originalPrice, discountedPrice, discount }) => {
-  const formattedOriginalPrice = `$${originalPrice}`;
-  const formattedDiscountPrice = `$${discountedPrice}`;
+  const formattedOriginalPrice = `$${originalPrice.toFixed(2)}`;
+  const formattedDiscountPrice = `$${Number.parseFloat(discountedPrice).toFixed(
+    2
+  )}`;
 
-  // console.log(formattedDiscountPrice);
   return (
     <div className="sneaker-price">
       <p className="sneaker-price__actual">

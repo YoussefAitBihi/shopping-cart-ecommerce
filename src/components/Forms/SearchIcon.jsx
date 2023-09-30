@@ -10,7 +10,7 @@ const SearchIcon = ({ className }) => {
       className={className}
     >
       <g clipPath="url(#clip0_15_152)">
-        <rect width="24" height="24" fill="white" />
+        <rect width="24" height="24" fill="transparent" />
         <circle
           cx="10.5"
           cy="10.5"

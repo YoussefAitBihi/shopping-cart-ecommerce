@@ -27,7 +27,7 @@ const SneakerItem = ({ item }) => {
         <SneakerPrice
           originalPrice={item.price}
           discount={item.discount}
-          discountedPrice={discountedPrice}
+          discountedPrice={+discountedPrice}
         />
         <Link to={item.id} className="primary-button">
           Show more

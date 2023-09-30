@@ -3,7 +3,7 @@ import CartItem from "./CartItem";
 import { useSelector } from "react-redux";
 
 const CartModal = (props) => {
-  const items = useSelector((state) => state.items);
+  const items = useSelector((state) => state.cart.items);
 
   let cartContent = <p className="cart-modal__fallback">Your cart is empty</p>;
 

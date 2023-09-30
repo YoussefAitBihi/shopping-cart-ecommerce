@@ -1,4 +1,4 @@
-import { ADD_ITEM } from "../../../store";
+import { cartActions } from "../../../store/cart-slice";
 import SneakerItemForm from "./SneakerItemForm";
 import SneakerPrice from "./SneakerPrice";
 import { useDispatch } from "react-redux";
@@ -10,8 +10,6 @@ const SneakerDetails = ({ sneaker }) => {
     sneaker.price - (sneaker.price * sneaker.discount) / 100
   }`;
 
-  console.log(discountedPrice);
-
   const onAddItemToCart = (amount) => {
     const item = {
       id: sneaker.id,
@@ -21,10 +19,7 @@ const SneakerDetails = ({ sneaker }) => {
       amount,
     };
 
-    dispatch({
-      type: ADD_ITEM,
-      item: item,
-    });
+    dispatch(cartActions.addItemToCart(item));
   };
 
   return (

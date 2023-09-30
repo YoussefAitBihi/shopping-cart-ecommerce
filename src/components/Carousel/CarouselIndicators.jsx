@@ -5,7 +5,7 @@ const CarouselIndicators = ({
   style,
 }) => {
   return (
-    <ul className="carousel-indicators" style={{ ...style }}>
+    <ul className="carousel-indicators" role="list" style={{ ...style }}>
       {indicators.map((indicator, currentKey) => {
         const translateValue = currentKey * 100 - currentSlide * 100;
         return (
