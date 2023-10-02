@@ -20,15 +20,15 @@ const useCarousel = (slidesLength) => {
   };
 
   // Automatic Slide
-  useEffect(() => {
-    const identifier = setInterval(() => {
-      nextSlide();
-    }, 5000);
+  // useEffect(() => {
+  //   const identifier = setInterval(() => {
+  //     nextSlide();
+  //   }, 5000);
 
-    return () => {
-      clearInterval(identifier);
-    };
-  }, [nextSlide]);
+  //   return () => {
+  //     clearInterval(identifier);
+  //   };
+  // }, [nextSlide]);
 
   return [nextSlide, prevSlide, activateIndicator, currentSlide];
 };

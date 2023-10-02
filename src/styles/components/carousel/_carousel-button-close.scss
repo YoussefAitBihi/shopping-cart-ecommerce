@@ -1,7 +1,7 @@
 .carousel-button-close {
   position: absolute;
+  top: 0;
   right: 0;
-  top: -3rem;
   z-index: 1;
 
   &:has(:hover, :focus) &__icon path {

@@ -1,8 +1,8 @@
 import CloseIcon from "./CloseIcon";
 
-const CarouselButtonClose = () => {
+const CarouselButtonClose = ({ onClose }) => {
   return (
-    <button className="carousel-button-close">
+    <button className="carousel-button-close" onClick={onClose}>
       <span className="sr-only">Click to close the Carousel Modal</span>
       <CloseIcon className="carousel-button-close__icon" />
     </button>

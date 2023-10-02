@@ -24,11 +24,13 @@
   }
 
   &__thumbnail {
-    width: 10rem;
+    width: 8rem;
+    min-width: 7rem;
 
     > img {
       border-radius: 0.8rem;
       transition: box-shadow 200ms;
+
       &:hover {
         box-shadow: $shadow-card-800;
       }

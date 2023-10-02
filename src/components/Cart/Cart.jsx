@@ -89,7 +89,7 @@ export default Cart;
 // DONE: Add 10 products with carousel
 // DONE: Solve the design issues
 // DONE: Switch to Redux
-// TODO: Deal with Carousel Modal
+// DONE: Deal with Carousel Modal
 // TODO: Deal with Form Search
 // TODO: Change the variables name
 // TODO: Deploy the Project

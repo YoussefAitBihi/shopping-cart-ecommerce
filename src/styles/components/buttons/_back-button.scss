@@ -1,13 +1,17 @@
 .back-button {
-  position: fixed;
-  top: 9rem;
-  left: 2rem;
+  width: 3.5rem;
+  height: 3.5rem;
+  display: grid;
+  place-content: center;
 
   background-color: $clr-primary-orange-pale;
   font-size: 1.6rem;
-  padding: 0.1em;
   line-height: 1;
   border-radius: 50%;
+
+  position: fixed;
+  top: 9rem;
+  left: 2rem;
 
   &:hover,
   &:focus {

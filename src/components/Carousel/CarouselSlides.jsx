@@ -1,6 +1,15 @@
+import { useDispatch } from "react-redux";
+import { carouselActions } from "../../store/carousel-modal-slice";
+
 const CarouselSlides = ({ slides, currentSlide }) => {
+  const dispatch = useDispatch();
+
+  const showCarouselModal = () => {
+    dispatch(carouselActions.showModal());
+  };
+
   return (
-    <ul className="carousel-slides">
+    <ul className="carousel-slides" onClick={showCarouselModal}>
       {slides.map((slide, currentIndex) => {
         const translateValue = currentIndex * 100 - currentSlide * 100;
         return (

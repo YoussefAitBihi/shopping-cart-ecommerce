@@ -1,25 +1,43 @@
 import FormSearchResults from "./FormSearchResults.jsx";
 import SearchIcon from "./SearchIcon.jsx";
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
 import { supabase } from "../../lib/api.js";
-import { Form } from "react-router-dom";
+import { Form, json, useNavigation } from "react-router-dom";
+import CloseIcon from "./CloseIcon.jsx";
 
 const FormSearch = () => {
   const [formSearchState, setFormSearchState] = useState({
     searchedSneakers: [],
     isLoading: false,
-    hasError: null,
+    fallbackMessage: null,
     formSearchIsVisible: false,
   });
 
+  const inputRef = useRef();
+
+  const { state } = useNavigation();
+
+  useEffect(() => {
+    if (state === "loading") {
+      setFormSearchState((prevFormSearchState) => {
+        return {
+          ...prevFormSearchState,
+          formSearchIsVisible: false,
+        };
+      });
+    }
+  }, [state]);
+
   const searchSneakerHandler = useCallback(async (event) => {
-    const value = event.target.value;
+    const value = event?.target?.value;
 
     if (!value) {
       setFormSearchState((prevFormSearchState) => {
         return {
           ...prevFormSearchState,
+          fallbackMessage: null,
           searchedSneakers: [],
+          formSearchIsVisible: false,
         };
       });
 
@@ -29,6 +47,7 @@ const FormSearch = () => {
     setFormSearchState((prevFormSearchState) => {
       return {
         ...prevFormSearchState,
+        formSearchIsVisible: true,
         isLoading: true,
       };
     });
@@ -36,42 +55,59 @@ const FormSearch = () => {
     const { data, error } = await supabase
       .from("products")
       .select("*")
-      .like("title", `%${value}%`);
+      .like("title", `%${value}%`)
+      .limit(10);
+
+    if (error)
+      throw json(
+        { message: "We're having trouble when we try to search" },
+        { status: 500 }
+      );
 
     setFormSearchState({
       searchedSneakers: data,
       isLoading: false,
-      hasError: error ? "We're having trouble when we try to search" : null,
+      fallbackMessage: data.length === 0 ? "No results" : null,
+      formSearchIsVisible: true,
     });
-
-    // Manage Error
   }, []);
 
   useEffect(() => {
     searchSneakerHandler();
   }, [searchSneakerHandler]);
 
-  const showFormSearchHandler = (event) => {
-    // if (event.target.value === "") return;
-
-    console.log(`Form Search On Focus ${event.target.value}`);
-
-    // setFormSearchState((prevFormSearchState) => {
-    //   return {
-    //     ...prevFormSearchState,
-    //     formSearchIsVisible: true,
-    //   };
-    // });
+  const showSearchSneakersHandler = () => {
+    setFormSearchState((prevFormSearchState) => {
+      return {
+        ...prevFormSearchState,
+        formSearchIsVisible:
+          prevFormSearchState.searchedSneakers.length > 0 ||
+          prevFormSearchState.isLoading ||
+          prevFormSearchState.fallbackMessage,
+      };
+    });
   };
 
-  const hideFormSearchHandler = () => {
-    console.log("Form Search On Blur");
-    // setFormSearchState((prevFormSearchState) => {
-    //   return {
-    //     ...prevFormSearchState,
-    //     formSearchIsVisible: false,
-    //   };
-    // });
+  const hideSearchSneakersHandler = (event) => {
+    console.log(event);
+    event.stopPropagation();
+    setFormSearchState((prevFormSearchState) => {
+      return {
+        ...prevFormSearchState,
+        formSearchIsVisible: false,
+      };
+    });
+  };
+
+  const clearFormSearchHandler = () => {
+    inputRef.current.value = "";
+    setFormSearchState((prevFormSearchState) => {
+      return {
+        ...prevFormSearchState,
+        searchedSneakers: [],
+        formSearchIsVisible: false,
+      };
+    });
   };
 
   return (
@@ -86,8 +122,10 @@ const FormSearch = () => {
         placeholder="Search sneakers"
         aria-label="Type to search"
         onChange={searchSneakerHandler}
-        onFocus={showFormSearchHandler}
-        onBlur={hideFormSearchHandler}
+        onFocus={showSearchSneakersHandler}
+        ref={inputRef}
+        // onBlur={hideSearchSneakersHandler}
+        autoComplete="off"
       />
       <button
         className="form-search__action"
@@ -97,16 +135,26 @@ const FormSearch = () => {
         <SearchIcon className="form-search__icon" />
       </button>
       {formSearchState.formSearchIsVisible && (
-        <FormSearchResults searchedSneakers={formSearchState} />
+        <button
+          className="form-search__close"
+          onClick={clearFormSearchHandler}
+          type="button"
+        >
+          <p className="sr-only">Clear form search</p>
+          <CloseIcon className="form-search__close-icon" />
+        </button>
+      )}
+
+      {formSearchState.formSearchIsVisible && (
+        <FormSearchResults
+          formSearchState={formSearchState}
+          // onClick={() => {
+          //   inputRef.current.focus();
+          // }}
+        />
       )}
     </Form>
   );
 };
 
 export default FormSearch;
-
-// Every keystroke: Results
-
-// Focus: Search anything (Show)
-// Blur: (Hide)
-// Transition: (Hide)

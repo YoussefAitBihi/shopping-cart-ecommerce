@@ -4,16 +4,24 @@ import CarouselIndicators from "./CarouselIndicators";
 import CarouselButtonLeft from "./CarouselButtonLeft";
 import CarouselButtonRight from "./CarouselButtonRight";
 import CarouselButtonClose from "./CarouselButtonClose";
+import { useDispatch } from "react-redux";
+import { carouselActions } from "../../store/carousel-modal-slice";
 
 const CarouselBackdrop = () => {
   return <div className="carousel-backdrop" />;
 };
 
 const CarouselModal = ({ params }) => {
+  const dispatch = useDispatch();
+
+  const closeCarouseModalHandler = () => {
+    dispatch(carouselActions.hideModal());
+  };
+
   return (
     <>
       <div className="carousel-modal-box">
-        <CarouselButtonClose />
+        <CarouselButtonClose onClose={closeCarouseModalHandler} />
         <CarouselButtonLeft
           onClickPrev={params.onClickPrev}
           style={{ display: "grid" }}
